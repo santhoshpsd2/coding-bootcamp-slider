@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 32px;
+}
+
+body {
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: url(./images/pattern-curve.svg), url(./images/pattern-quotes.svg),
+    url(./images/pattern-bg.svg);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: left bottom, left 25% top 30%, top 30% right 10%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardcontainer {
+  overflow: hidden;
+  /* border: 1px solid black; */
+  width: 70vw;
+  height: 70vh;
+  position: relative;
+}
+
+.arrows {
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.6rem;
+  display: flex;
+  gap: 0.8rem;
+  background-color: #fff;
+  color: hsl(240, 18%, 77%);
+  position: absolute;
+  left: 60%;
+  bottom: 10px;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.arrows > * {
+  cursor: pointer;
+}
+
+.card {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* transform: translateX(100%); */
+}
+
+.card.active {
+  display: block;
+  /* transform: translateX(0); */
+  animation: fading 1s;
+}
+
+.card.left {
+  animation: leftslide 1s;
+}
+
+.card.right {
+  animation: rightslide 1s;
+}
+
+@keyframes fading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes leftslide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rightslide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.cardtext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+.cardimage {
+  height: 70vh;
+  float: right;
+}
+
+.cardimage img {
+  height: 95%;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 1rem;
+  color: hsl(240, 38%, 20%);
+  width: 42vw;
+  margin-bottom: 0.7rem;
+}
+
+.namespace {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.namespace h2 {
+  font-size: 0.7rem;
+  color: hsl(240, 38%, 20%);
+}
+
+small {
+  font-size: 0.7rem;
+  color: hsl(240, 18%, 77%);
+}
+
+@media (max-width: 1000px) {
+  body {
+    background: none;
+    min-height: 100vh;
+  }
+
+  .cardcontainer {
+    width: 400px;
+    height: 700px;
+    background: url(./images/pattern-curve.svg),
+      url(./images/pattern-quotes.svg), url(./images/pattern-bg.svg);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 70%, 20%, 90%;
+    background-position: left bottom, left 50% top 62%, top 5% right 10%;
+  }
+
+  .cardtext {
+    transform: translateY(0);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transform: translateX(100%);
+    display: none;
+  }
+
+  .card.active {
+    display: block;
+    transform: translateX(0);
+  }
+
+  .cardimage {
+    width: 100%;
+    height: 50%;
+    display: flex;
+  }
+
+  .cardtext {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cardimage img {
+    object-fit: cover;
+    margin: auto;
+    height: 90%;
+    width: 80%;
+  }
+
+  h1 {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+
+  .arrows {
+    top: 45%;
+    left: 50%;
+    bottom: auto;
+    transform: translateX(-50%);
+  }
+
+  .namespace {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
